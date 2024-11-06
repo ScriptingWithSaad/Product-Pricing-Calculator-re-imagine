@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Pricing Calculator |ScriptingWithSaad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./stylesheet/style.css">
+    <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+</head>
+<body>
+    <div class="calculator">
+        <div class="header">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-sun"></i>
+            </button>
+            <h2>Product Pricing Calculator</h2>
+            <p>Calculate your product costs, profits, and margins with precision</p>
+        </div>
+
+        <div class="calculator-grid">
+            <div class="input-section">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="quantity">Quantity</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="quantity" placeholder="Enter quantity" min="1">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="sourcingPrice">Product Sourcing Price</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="sourcingPrice" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="carriage">Carriage</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="carriage" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="packaging">Packaging</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="packaging" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shipping">Shipping</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="shipping" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="returns">Returns</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="returns" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="input-group highlight">
+                        <label for="sellingPrice">Selling Price</label>
+                        <div class="input-wrapper">
+                            <span class="currency-prefix">Rs</span>
+                            <input type="number" id="sellingPrice" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="result-card">
+                    <div class="result-label">
+                        Total Cost
+                        <span class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip">Sum of all costs: sourcing + carriage + packaging + shipping + returns</span>
+                        </span>
+                    </div>
+                    <div class="result-value">
+                        <span class="currency-symbol">Rs</span>
+                        <span id="totalCost">0.00</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">
+                        Gross Profit
+                        <span class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip">Selling Price - Total Cost</span>
+                        </span>
+                    </div>
+                    <div class="result-value">
+                        <span class="currency-symbol">Rs</span>
+                        <span id="grossProfit">0.00</span>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">
+                        Gross Margin
+                        <span class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip">(Gross Profit ÷ Selling Price) × 100</span>
+                        </span>
+                    </div>
+                    <div class="result-value" id="grossMargin">0.00%</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-label">
+                        Breakeven Price
+                        <span class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip">Total Cost (The minimum selling price needed to cover all costs)</span>
+                        </span>
+                    </div>
+                    <div class="result-value">
+                        <span class="currency-symbol">Rs</span>
+                        <span id="breakeven">0.00</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary save-history" id="saveHistory">
+                    <i class="fas fa-save"></i>
+                    Save to History
+                </button>
+            </div>
+
+            <div class="history-section" id="historySection">
+                <div class="history-header">
+                    <h3>Calculation History</h3>
+                    <div class="button-group">
+                        <button class="btn btn-danger" id="clearHistory">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+                <div class="history-list" id="historyList">
+                    <!-- History items will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+</html>
